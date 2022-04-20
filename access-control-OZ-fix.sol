@@ -1,15 +1,18 @@
 // SPDX-License-Identifier: GPL-3.0
 
 pragma solidity ^0.8.13;
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract AgreedPrice {
+
+contract AgreedPrice is Ownable {
+
   uint256 public price;
 
   constructor(uint256 _price) {
     price = _price;
   }
 
-  function updatePrice(uint256 _price) external {
+  function updatePrice(uint256 _price) external onlyOwner {
     price = _price;
   }
 }
